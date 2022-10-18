@@ -1,14 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/harry-potter');
 
-* {
-    margin: 0 auto;
-    text-align: center;
+
+*, *:before, *:after {
+	box-sizing: border-box;
+	outline: none;
 }
 
 body {
-    background-color: rgb(100, 136, 104);
-    font-family: 'Montserrat';
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content:space-between;
+
+	width: 100%;
+	height: 100vh;
+	background-image: url('./images/simon-marsault-bDJOs9Th2GQ-unsplash.jpeg');
+	background-position: left center;
+	background-size: cover;
+	color: #444;
+	z-index: -1;
+	text-align: center;
+	font-family: 'Montserrat';
 }
+	
+	body :before, :after {
+		position: absolute;
+		content: '';
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		z-index: -1;
+	}
+	
+	:before {
+		top: 0;
+		left: 0;
+		background-image: url('https://github.com/joshuaward/codepen-images/blob/master/clouds-left.png?raw=true');
+		animation: clouds1 110s linear infinite;
+	}
+	
+	:after {
+		bottom: 0;
+		left: 0;
+		background-image: url('https://github.com/joshuaward/codepen-images/blob/master/clouds-right.png?raw=true');
+		animation: clouds2 100s linear infinite;
+	}
+	
+	@keyframes clouds1 {
+		to { background-position: 200%; }
+	}
+	
+	@keyframes clouds2 {
+		to { background-position: -200%; }
+	}
+
 
 label {
     font-size: 20px;
@@ -16,26 +62,24 @@ label {
 
 h1 {
 font-size: 30pt;
-margin: 10pt;
+margin: 20pt;
 padding-top: 40px;
+font-family: 'Harry Potter', sans-serif;
+color: rgb(108, 62, 155);
 }
 
-button {
-    margin: 20px;
-    padding: 10px;
-    width: 150px;
-}
 
 #wrongorright {
     display: none;
 }
 
 #answers {
-width: 100%;
-height: 150px;
+height: auto;
 display: flex;
 flex-direction: column;
 gap: 25px;
+padding: 20px 50px 50px 50px;
+
 }
 
 p {
@@ -45,7 +89,7 @@ p {
 h2 {
     font-size: 18px;
     padding: 5px;
-    color: rgb(100, 136, 104);
+    color: rgb(70, 67, 77);
 }
 
 
@@ -60,6 +104,37 @@ h3 {
     display: none;
 }
 
+#house-img {
+    display: none;
+    width: 100%;
+    height: auto;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 40px;
+
+}
+
+#submit {
+    display: none;
+}
+
+img {
+	object-fit: contain;
+	width: 40%;
+	height: auto;
+}
+
+#question {
+    display: none;
+	margin: 0px 50px 0px 50px;
+}
+
+#house-info {
+    margin: 0px 50px 30px 50px;
+	line-height: 1.6;
+}
+
+
 .buttons {
     display: flex;
     flex-direction: column;
@@ -67,14 +142,22 @@ h3 {
 }
 
 button {
-    background-color: rgb(100, 136, 104);
+    background-color: rgb(108, 62, 155);
     border: none;
     color: white;
+    border-radius: 9pt;
+    /* margin: 20px; */
+    padding: 10px;
+    width: 200px;
+    height: 35pt;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 2pt;
 }
 
 main {
-    width: 450px;
-    height: 600px;
+    width: 550px;
+    height: 700px;
     margin: auto;
     background-color: white;
     top: 0;
@@ -82,4 +165,53 @@ main {
     left: 0;
     right: 0;
     position: fixed;
+    border-radius: 25pt;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+
 }
+
+input[type="radio"] {
+	/* Add if not using autoprefixer */
+	-webkit-appearance: none;
+	/* Remove most all native input styles */
+	appearance: none;
+	/* For iOS < 15 */
+	background-color: var(--form-background);
+	/* Not removed via appearance */
+	margin: 0;
+  
+	font: inherit;
+	color: currentColor;
+	width: 1.15em;
+	height: 1.15em;
+	border: 0.15em solid currentColor;
+	border-radius: 0;
+	transform: translateY(-0.075em);
+  
+	/* display: flex;
+	place-content: center; */
+  }
+  
+  input[type="radio"]::before {
+	content: "";
+	width: 0.65em;
+	height: 0.65em;
+	border-radius: 50%;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1em 1em rgb(231, 220, 5);
+	/* Windows High Contrast Mode */
+	background-color: CanvasText;
+	z-index: -10;
+  }
+  
+  input[type="radio"]:checked::before {
+	transform: scale(1);
+  }
+  
+  /* input[type="radio"]:focus {
+	outline: max(2px, 0.15em) solid currentColor;
+	outline-offset: max(2px, 0.15em);
+  } */
